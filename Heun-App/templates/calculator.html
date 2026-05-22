@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculator</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Interactive Heun Calculator</h1>
+
+    <form method="POST">
+
+        <label>f(x,y)</label>
+        <input type="text"
+        name="equation"
+        value="x+y"
+        required>
+
+        <label>x₀</label>
+        <input type="number"
+        step="any"
+        name="x0"
+        required>
+
+        <label>y₀</label>
+        <input type="number"
+        step="any"
+        name="y0"
+        required>
+
+        <label>Step Size h</label>
+        <input type="number"
+        step="any"
+        name="h"
+        required>
+
+        <label>Target x</label>
+        <input type="number"
+        step="any"
+        name="target"
+        required>
+
+        <button type="submit">
+            Calculate
+        </button>
+
+    </form>
+
+    {% if result %}
+
+    <div class="result">
+
+        <h2>Final Result</h2>
+
+        <p>
+            Approximate Value:
+            {{ result }}
+        </p>
+
+    </div>
+
+    <h2>Steps Table</h2>
+
+    <table>
+
+        <tr>
+            <th>n</th>
+            <th>xₙ</th>
+            <th>yₙ</th>
+            <th>f(xₙ,yₙ)</th>
+            <th>Predictor</th>
+            <th>f(xₙ₊₁,yₚ)</th>
+            <th>yₙ₊₁</th>
+        </tr>
+
+        {% for row in steps %}
+
+        <tr>
+
+            <td>{{ row.n }}</td>
+            <td>{{ row.x }}</td>
+            <td>{{ row.y }}</td>
+            <td>{{ row.slope_start }}</td>
+            <td>{{ row.predictor }}</td>
+            <td>{{ row.slope_end }}</td>
+            <td>{{ row.y_next }}</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+    {% endif %}
+
+    <a href="/">
+        <button>Back Home</button>
+    </a>
+
+</div>
+
+</body>
+</html>

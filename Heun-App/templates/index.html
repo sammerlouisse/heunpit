@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Improved Euler Method</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']]
+            }
+        };
+    </script>
+
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+
+    <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+    </script>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Improved Euler Method (Heun Method)</h1>
+
+    <p>
+        The Improved Euler method, also called <b>Heun's method</b>,
+                is used to approximate the solution of an initial value problem:
+    </p>
+
+    <div class="formula">
+        $$ \frac{dy}{dx} = f(x,y) $$$$ y(x_0) = y_0 $$
+    </div>
+    <p>
+              <p>
+                Ordinary Euler's method uses only the slope at the beginning.
+                Heun’s method improves accuracy by averaging the initial slope
+                and predicted slope at the end of the interval.
+            </p>
+    </p>
+
+
+    <h2>Algorithm</h2>
+
+
+    <div class="formula">
+    </p>
+Predictor
+</p>
+        $$ y_p = y_n + h f(x_n,y_n) $$
+    </div>
+
+    <div class="formula">
+    </p>
+Corrector
+</p>
+        $$ y_{n+1} =
+        y_n + \frac{h}{2}
+        [f(x_n,y_n) + f(x_{n+1},y_p)] $$
+    </div>
+
+    <br>
+
+    <a href="/examples">
+        <button>View Examples</button>
+    </a>
+
+    <a href="/calculator">
+        <button>Open Calculator</button>
+    </a>
+
+</div>
+
+</body>
+</html>
