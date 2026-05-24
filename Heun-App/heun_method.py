@@ -1,5 +1,4 @@
 import math
-
 def f(expression, x, y):
 
     allowed_names = {
@@ -19,17 +18,19 @@ def f(expression, x, y):
         "e": math.e
     }
 
-    # USER INPUT SHORTCUTS
-
     expression = expression.replace("^", "**")
     expression = expression.replace("x2", "x**2")
     expression = expression.replace("y2", "y**2")
 
-    return eval(
-        expression,
-        {"__builtins__": {}},
-        allowed_names
-    )
+    try:
+        return eval(
+            expression,
+            {"__builtins__": {}},
+            allowed_names
+        )
+
+    except Exception:
+        return 0
 
 
 def heun_method(expression, x0, y0, h, target):
